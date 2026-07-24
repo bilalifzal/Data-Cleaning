@@ -2,7 +2,7 @@
 
 A Python-based exploratory data analysis (EDA) project that studies global air quality patterns using AQI (Air Quality Index), PM2.5, temperature, and humidity data collected across major cities worldwide.
 
----
+--
 
 ## 📌 Project Overview
 
