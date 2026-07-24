@@ -2,11 +2,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 1. Dataset Load karna
 df = pd.read_csv('globalAirQuality.csv')
 df2 = df.copy()
 
-# 2. Datetime conversion aur columns banana
+
 df2['timestamp'] = pd.to_datetime(df2['timestamp'])
 df2['year'] = df2['timestamp'].dt.year
 df2['month'] = df2['timestamp'].dt.month
@@ -22,7 +21,7 @@ plt.title('Country-wise Data Distribution (Pie Chart)')
 plt.tight_layout()
 plt.show()
 
-# --- GRAPH 1: Line Chart (AQI Trend Over Time) ---
+
 plt.figure(figsize=(12, 5))
 plt.plot(df2['timestamp'], df2['aqi'], color='orange', linewidth=0.8)
 plt.title('1. Global Air Quality Index (AQI) Trend Over Time', fontsize=12, fontweight='bold')
@@ -32,7 +31,7 @@ plt.grid(True)
 plt.show()
 
 
-# --- GRAPH 2: Histogram (AQI Distribution) ---
+
 plt.figure(figsize=(8, 4))
 plt.hist(df2['aqi'], bins=30, color='skyblue', edgecolor='black')
 plt.title('2. AQI Distribution (Frequency Histogram)', fontsize=12, fontweight='bold')
@@ -43,7 +42,6 @@ plt.tight_layout()
 plt.show()
 
 
-# --- GRAPH 3: Scatter Plot (Temperature vs Humidity) ---
 plt.figure(figsize=(8, 4))
 plt.scatter(df2['temperature'], df2['humidity'], color='purple', alpha=0.3, s=15)
 plt.title('3. Temperature vs Humidity (Scatter Plot)', fontsize=12, fontweight='bold')
@@ -54,7 +52,6 @@ plt.tight_layout()
 plt.show()
 
 
-# --- GRAPH 4: Bar Chart (Average AQI by City) ---
 city_avg_aqi = df2.groupby('city')['aqi'].mean()
 
 plt.figure(figsize=(8, 4))
@@ -68,8 +65,6 @@ plt.tight_layout()
 plt.show()
 
 
-# --- GRAPH 5: Box Plot (PM2.5 Spread across Cities) ---
-# Yeh check karne ke liye ke kis city mein PM2.5 ki values kitni zyadah fluctuate (spread) hoti hain
 plt.figure(figsize=(8, 4))
 df2.boxplot(column='pm25', by='city', grid=False, patch_artist=True)
 plt.title('5. PM2.5 Spread Across Different Cities', fontsize=12, fontweight='bold')
